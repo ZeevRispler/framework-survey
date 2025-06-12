@@ -7,3 +7,5 @@ langchain_openai
 langchain_community
 faiss-cpu
 llama_index
+pydantic
+pydantic_ai
