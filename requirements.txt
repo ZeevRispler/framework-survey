@@ -9,3 +9,5 @@ faiss-cpu
 llama_index
 pydantic
 pydantic_ai
+crewai
+crewai_tools
