@@ -1,0 +1,9 @@
+python-dotenv
+openai
+langchain
+langchain_core
+langgraph
+langchain_openai
+langchain_community
+faiss-cpu
+llama_index
