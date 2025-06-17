@@ -1,4 +1,4 @@
-# LangChain - Customizable Components
+# LangChain - Components
 
 ## 🔗 Prompt Templates
 
@@ -64,7 +64,7 @@ messages = [
 response = model.invoke(messages)
 ```
 
-## 🛠️ Custom Tools
+## 🛠️ Tools
 
 Define functions that LLMs can call to perform specific tasks.
 
@@ -85,7 +85,7 @@ def calculator(expression: str) -> str:
     return str(eval(expression))
 ```
 
-## 📄 Custom Document Loaders
+## 📄 Document Loaders
 
 Load data from custom sources or formats into LangChain documents.
 
