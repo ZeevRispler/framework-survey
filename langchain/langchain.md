@@ -2,6 +2,8 @@
 
 ## 🔗 Prompt Templates
 
+Create dynamic prompts with variables and multi-role conversations.
+
 **Class**: `ChatPromptTemplate`, `PromptTemplate`  
 **Base Class**: `BasePromptTemplate`  
 **Docs**: [Prompt Templates](https://python.langchain.com/docs/concepts/prompt_templates/)
@@ -23,7 +25,48 @@ formatted = prompt.invoke({
 })
 ```
 
+## 🧠 LLMs / Chat Models
+
+Configure language models with custom parameters and behavior.
+
+**Classes**: `ChatOpenAI`, `init_chat_model`, various provider classes  
+**Base Class**: `BaseChatModel`, `BaseLLM`  
+**Docs**: [Chat Models](https://python.langchain.com/docs/concepts/chat_models/)
+
+```python
+from langchain.chat_models import init_chat_model
+from langchain_openai import ChatOpenAI
+
+# Universal model initialization
+model = init_chat_model(
+    "gpt-4o-mini",
+    model_provider="openai",
+    temperature=0.7,
+    max_tokens=1000
+)
+
+# Direct provider configuration
+openai_model = ChatOpenAI(
+    model="gpt-4o-mini",
+    temperature=0.7,
+    max_tokens=1000,
+    timeout=30,
+    max_retries=2
+)
+
+# Using with custom system messages
+from langchain_core.messages import SystemMessage, HumanMessage
+
+messages = [
+    SystemMessage(content="You are a helpful assistant"),
+    HumanMessage(content="Hello!")
+]
+response = model.invoke(messages)
+```
+
 ## 🛠️ Custom Tools
+
+Define functions that LLMs can call to perform specific tasks.
 
 **Class**: `BaseTool`, `@tool` decorator  
 **Base Class**: `BaseTool`  
@@ -43,6 +86,8 @@ def calculator(expression: str) -> str:
 ```
 
 ## 📄 Custom Document Loaders
+
+Load data from custom sources or formats into LangChain documents.
 
 **Class**: `BaseLoader`  
 **Base Class**: `BaseLoader`  
@@ -64,6 +109,8 @@ class CustomLoader(BaseLoader):
 ```
 
 ## ✂️ Text Splitters Usage
+
+Configure how documents are chunked for processing and retrieval.
 
 **Available Classes**: `RecursiveCharacterTextSplitter`, `CharacterTextSplitter`, `TokenTextSplitter`  
 **Docs**: [Text Splitters](https://python.langchain.com/docs/concepts/text_splitters/)
@@ -88,6 +135,8 @@ chunks = text_splitter.split_text("Your long text here...")
 ```
 
 ## 🔍 Retrievers Usage
+
+Configure how relevant documents are found and returned for queries.
 
 **Available Classes**: `VectorStoreRetriever`, `MultiQueryRetriever`, `ParentDocumentRetriever`  
 **Docs**: [Retrievers](https://python.langchain.com/docs/concepts/retrievers/)
@@ -118,6 +167,8 @@ results = retriever.invoke("your query here")
 ```
 
 ## 🗃️ Vector Stores Usage
+
+Store and search document embeddings with different backends and configurations.
 
 **Available Classes**: `FAISS`, `Chroma`, `InMemoryVectorStore`, `Pinecone`  
 **Docs**: [Vector Stores](https://python.langchain.com/docs/concepts/vectorstores/)
